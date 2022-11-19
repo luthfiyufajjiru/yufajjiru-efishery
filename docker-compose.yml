@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  authapp:
+    container_name: efishery_luthfi_authapp
+    image: efishery/yufajjiru/authapp:1.0.0
+    build: 
+      context: ./AuthApp
+      target: build
+    environment:
+      - port=8080
+    expose:
+      - 8080
+      - 2346
+    ports:
+      - 8080:8080
+      - 2345:2345
+    volumes:
+      - ./AuthApp:/app
+    security_opt:
+      - "seccomp:unconfined"
+  fetchapp:
+    container_name: efishery_luthfi_fetchapp
+    image: efishery/yufajjiru/fetchapp:1.0.0
+    build: 
+      context: ./FetchApp
+      target: build
+    environment:
+      - port=8000
+    expose:
+      - 8000
+      - 2346
+    ports:
+      - 8000:8000
+      - 2346:2346
+    volumes:
+      - ./FetchApp:/app
+    security_opt:
+      - "seccomp:unconfined"
