@@ -1,4 +1,4 @@
-package dal
+package adapters
 
 import (
 	"gorm.io/driver/sqlite"
@@ -10,7 +10,7 @@ type SQLAdapter struct {
 	DB               *gorm.DB
 }
 
-func NewSqlContext(dsn string) (db *gorm.DB, err error) {
+func newSqlContext(dsn string) (db *gorm.DB, err error) {
 	db, err = gorm.Open(sqlite.Open(dsn), &gorm.Config{})
 	return
 }

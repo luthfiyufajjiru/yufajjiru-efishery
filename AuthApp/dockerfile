@@ -11,7 +11,7 @@ RUN chmod +x ./dlv.sh
 ENTRYPOINT [ "./dlv.sh"]
 
 
-FROM gcr.io/distroless/base-debian10
+FROM gcr.io/distroless/base-debian10 AS prod
 WORKDIR /
 COPY --from=build /authapp /authapp
 USER nonroot:nonroot
