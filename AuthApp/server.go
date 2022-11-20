@@ -22,7 +22,7 @@ func RunServer(address string) error {
 	api := app.Group("/api")
 
 	v1collection := api.Group("/v1")
-	v1collection.Mount("/", account.GetRoutesV1(x))
+	v1collection.Mount("/account", account.GetRoutesV1(x))
 
 	return app.Listen(address)
 }

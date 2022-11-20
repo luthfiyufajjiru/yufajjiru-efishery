@@ -1,8 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"os"
+)
+
+var (
+	address string
+)
+
+func init() {
+	address = fmt.Sprintf("0.0.0.0:%s", os.Getenv("port"))
+}
 
 func main() {
-	fmt.Println("Hello")
-	fmt.Println("world")
+	log.Fatal(RunServer(address))
 }
