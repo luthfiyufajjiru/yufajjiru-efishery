@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  authapp:
+    container_name: efishery_luthfi_authapp
+    image: efishery/yufajjiru/authapp:1.0.0
+    build: 
+      context: ./AuthApp
+      target: prod
+    environment:
+      - port=8040
+    expose:
+      - 8040
+    ports:
+      - 8040:8040
+  fetchapp:
+    container_name: efishery_luthfi_fetchapp
+    image: efishery/yufajjiru/fetchapp:1.0.0
+    build: 
+      context: ./FetchApp
+      target: prod
+    environment:
+      - port=8041
+      - authapp_url="localhost:8040"
+    expose:
+      - 8041
+    ports:
+      - 8041:8041
+    volumes:
+      - ./FetchApp:/app
