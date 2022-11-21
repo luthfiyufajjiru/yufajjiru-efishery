@@ -5,28 +5,26 @@ services:
     image: efishery/yufajjiru/authapp:1.0.0
     build: 
       context: ./AuthApp
-      # target: build
-      target: prod
+      target: build
     environment:
       - port=8040
-      # - dlv_port=2345
+      - dlv_port=2345
     expose:
-      # - 2345
+      - 2345
       - 8040
     ports:
-      # - 2345:2345
+      - 2345:2345
       - 8040:8040
-    # volumes:
-    #   - ./AuthApp:/app
-    # security_opt:
-    #   - "seccomp:unconfined"
+    volumes:
+      - ./AuthApp:/app
+    security_opt:
+      - "seccomp:unconfined"
   fetchapp:
     container_name: efishery_luthfi_fetchapp
     image: efishery/yufajjiru/fetchapp:1.0.0
     build: 
       context: ./FetchApp
       target: build
-      # target: prod
     environment:
       - port=8041
       - dlv_port=2346
