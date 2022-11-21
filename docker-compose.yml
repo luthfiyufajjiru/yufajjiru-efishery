@@ -1,7 +1,11 @@
 version: '3.8'
+networks:
+  e-fishery-network:
+    name: e-fishery-network
 services:
-  authapp:
-    container_name: efishery_luthfi_authapp
+  authapp-dev:
+    hostname: authapp
+    container_name: efishery_luthfi_authapp_dev
     image: efishery/yufajjiru/authapp:1.0.0
     build: 
       context: ./AuthApp
@@ -15,12 +19,15 @@ services:
     ports:
       - 2345:2345
       - 8040:8040
+    networks:
+      - e-fishery-network
     volumes:
       - ./AuthApp:/app
     security_opt:
       - "seccomp:unconfined"
-  fetchapp:
-    container_name: efishery_luthfi_fetchapp
+  fetchapp-dev:
+    hostname: fetchapp
+    container_name: efishery_luthfi_fetchapp_dev
     image: efishery/yufajjiru/fetchapp:1.0.0
     build: 
       context: ./FetchApp
@@ -28,14 +35,49 @@ services:
     environment:
       - port=8041
       - dlv_port=2346
-      - authapp_url="localhost:8040"
+      - authapp_url=http://authapp:8040
     expose:
       - 2346
       - 8041
     ports:
       - 2346:2346
       - 8041:8041
+    networks:
+      - e-fishery-network
     volumes:
       - ./FetchApp:/app
     security_opt:
       - "seccomp:unconfined"
+  authapp:
+    hostname: authapp
+    container_name: efishery_luthfi_authapp
+    image: efishery/yufajjiru/authapp:1.0.0
+    build: 
+      context: ./AuthApp
+      target: prod
+    environment:
+      - port=8040
+    expose:
+      - 8040
+    ports:
+      - 8040:8040
+    networks:
+      - e-fishery-network
+  fetchapp:
+    hostname: fetchapp
+    container_name: efishery_luthfi_fetchapp
+    image: efishery/yufajjiru/fetchapp:1.0.0
+    build: 
+      context: ./FetchApp
+      target: prod
+    environment:
+      - port=8041
+      - authapp_url="authapp:8040"
+    expose:
+      - 8041
+    ports:
+      - 8041:8041
+    volumes:
+      - ./FetchApp:/app
+    networks:
+      - e-fishery-network

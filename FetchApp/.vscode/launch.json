@@ -12,7 +12,7 @@
       "remotePath": "/app/",
       "port": 2346,
       "host": "127.0.0.1",
-      "program": "$../{workspaceFolder}",
+      "program": "${workspaceFolder}",
       "args": [],
       "trace" : "verbose",
       "env" : {}
