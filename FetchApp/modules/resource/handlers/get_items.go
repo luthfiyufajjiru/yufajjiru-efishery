@@ -3,7 +3,6 @@ package handlers
 import (
 	"fetchapp/modules/auth"
 	"fetchapp/modules/auth/models"
-	md "fetchapp/modules/resource/models"
 	"fetchapp/modules/resource/services"
 	"net/http"
 
@@ -24,7 +23,7 @@ func GetItems() fiber.Handler {
 			return fiber.NewError(http.StatusForbidden, "not allowed")
 		}
 
-		data := md.SetAllPriceUSD(services.GetResources())
+		data := services.SetAllPriceUSD(services.GetResources())
 
 		c.Status(http.StatusOK).JSON(data)
 

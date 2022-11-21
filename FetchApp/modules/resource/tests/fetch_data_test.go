@@ -1,7 +1,6 @@
 package tests
 
 import (
-	md "fetchapp/modules/resource/models"
 	"fetchapp/modules/resource/services"
 	"testing"
 )
@@ -23,7 +22,7 @@ func TestFetchResourcesUSD(t *testing.T) {
 		t.Fatal("failed to fetch resources")
 	}
 
-	c := md.SetAllPriceUSD(d)
+	c := services.SetAllPriceUSD(d)
 
 	for i, v := range c {
 		if v.Price != "" && v.PriceUsd == "" {
