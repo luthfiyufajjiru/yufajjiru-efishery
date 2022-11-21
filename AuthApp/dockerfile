@@ -8,6 +8,7 @@ COPY ./ /app
 RUN go mod download
 RUN go build -o /authapp
 RUN chmod +x ./dlv.sh
+RUN chmod +w authapp.sqlite
 ENTRYPOINT [ "./dlv.sh"]
 
 
@@ -15,5 +16,5 @@ FROM golang:1.19-buster AS prod
 WORKDIR /
 COPY --from=build /authapp /authapp
 COPY --from=build /app/authapp.sqlite /
-RUN chmod +w authapp.sqlite
+
 ENTRYPOINT ["/authapp"]
