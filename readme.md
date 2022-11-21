@@ -16,6 +16,8 @@
 - That command means you are starting auth app as a compiled binary, and the fetchapp is able to debug.
 - You can swap between fetchapp or authapp for that command.
 - The api specification is served by postman and you can import with `api-spec.json`.
+- if you are running the app in dev mode, after starting the container, you must launch the app via run and the bug panel vscode and choose the profile based on the app.
+
 ## API Reference Overview
 
 ### Auth App

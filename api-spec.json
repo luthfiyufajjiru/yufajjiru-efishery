@@ -1,0 +1,306 @@
+{
+	"info": {
+		"_postman_id": "9271ff58-b81f-4f63-bf4b-37d2c2cf792a",
+		"name": "EFishery",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15653510"
+	},
+	"item": [
+		{
+			"name": "AuthApp",
+			"item": [
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone_number\": \"+6281512414211\",\r\n    \"name\": \"Test\",\r\n    \"role\": \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host1}}/api/v1/account/sign-up",
+							"host": [
+								"{{host1}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"sign-up"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sign Up",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone_number\": \"+6281315804230\",\r\n    \"name\": \"Test\",\r\n    \"role\": \"user\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8040/api/v1/account/sign-up",
+									"host": [
+										"localhost"
+									],
+									"port": "8040",
+									"path": [
+										"api",
+										"v1",
+										"account",
+										"sign-up"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 20 Nov 2022 06:42:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4"
+								}
+							],
+							"cookie": [],
+							"body": "BpLn"
+						}
+					]
+				},
+				{
+					"name": "Sign In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone_number\": \"+6281512414211\",\r\n    \"password\": \"BpLn\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host1}}/api/v1/account/sign-in",
+							"host": [
+								"{{host1}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"sign-in"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sign In",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone_number\": \"+6281315804230\",\r\n    \"password\": \"BpLn\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8040/api/v1/account/sign-in",
+									"host": [
+										"localhost"
+									],
+									"port": "8040",
+									"path": [
+										"api",
+										"v1",
+										"account",
+										"sign-in"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 20 Nov 2022 06:43:23 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "183"
+								}
+							],
+							"cookie": [],
+							"body": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiIiwicGhvbmVfbnVtYmVyIjoiKzYyODEzMTU4MDQyMzAiLCJyb2xlIjoiIiwidGltZXN0YW1wIjoxNjY4OTI4NDA0fQ.WT_jQPiZp9Eb6kMI3mpKyFy0QwYb63NelY2N4tumIaU"
+						}
+					]
+				},
+				{
+					"name": "Token Claim",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGVzdCIsInBob25lX251bWJlciI6Iis2MjgxNTEyNDE0MjExIiwicm9sZSI6InVzZXIiLCJ0aW1lc3RhbXAiOjE2NjkwMzM1NjV9.ASiSIIw-l3ozBCJbIQ32mI-0tiJhHVOsOYUhQYvF66E",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host1}}/api/v1/account/claim",
+							"host": [
+								"{{host1}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"claim"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Token Claim",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGVzdCIsInBob25lX251bWJlciI6Iis2MjgxMzE1ODA0MjMwIiwicm9sZSI6InVzZXIiLCJ0aW1lc3RhbXAiOjE2Njg5MzA3NTN9.9w15Om2uu6_GYiTDJiafZOnLayrvZeIfb3xxLDZcB-c",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8040/api/v1/account/claim",
+									"host": [
+										"localhost"
+									],
+									"port": "8040",
+									"path": [
+										"api",
+										"v1",
+										"account",
+										"claim"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 20 Nov 2022 07:22:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Test\",\n    \"phone_number\": \"+6281315804230\",\n    \"role\": \"user\",\n    \"timestamp\": 1668930753\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "FetchApp",
+			"item": [
+				{
+					"name": "Get Items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGVzdCIsInBob25lX251bWJlciI6Iis2MjgxNTEyNDE0MjExIiwicm9sZSI6InVzZXIiLCJ0aW1lc3RhbXAiOjE2NjkwMzY2MTV9.DnReA4c6eTybahjBSjal5mf4pll886zAXcURjcxY9yo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host2}}/api/v1/items/",
+							"host": [
+								"{{host2}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"items",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host1",
+			"value": "localhost:8040",
+			"type": "string"
+		},
+		{
+			"key": "host2",
+			"value": "localhost:8041",
+			"type": "string"
+		}
+	]
+}
