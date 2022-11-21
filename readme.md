@@ -12,7 +12,7 @@
 - Install Golang official extension to debug.
 - After clone this repository, open `services.code-workspace` with VsCode.
 - There is docker-compose.yml and docker-compose-prod.yml.
-- Run this command in the terminal: `docker compose -f docker-compose-prod.yml up authapp -d ; docker compose -f docker-compose.yml up fetchapp -d`
+- Run this command in the terminal: `docker compose up authapp -d ; docker compose up fetchapp-dev -d`
 - That command means you are starting auth app as a compiled binary, and the fetchapp is able to debug.
 - You can swap between fetchapp or authapp for that command.
 - The api specification is served by postman and you can import with `api-spec.json`.
