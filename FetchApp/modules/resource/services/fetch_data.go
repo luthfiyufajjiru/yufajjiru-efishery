@@ -53,7 +53,9 @@ func PriceUSD(price string) string {
 func SetAllPriceUSD(s []models.ResourceDTO) []models.ResourceDTO {
 
 	for i := range s {
-		s[i].PriceUsd = PriceUSD(s[i].Price)
+		if s[i].Price != "" {
+			s[i].PriceUsd = PriceUSD(s[i].Price)
+		}
 	}
 
 	return s
