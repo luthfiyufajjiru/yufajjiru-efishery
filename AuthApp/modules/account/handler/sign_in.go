@@ -26,7 +26,7 @@ func SignIn(x *adapters.Adapters) fiber.Handler {
 		user, valid := dal.ValidateUser(x.SQL.DB, am.UserModel{PhoneNumber: u.PhoneNumber}, u.Password)
 
 		if !valid {
-			return fiber.NewError(http.StatusUnauthorized, "not authorized")
+			return fiber.NewError(http.StatusForbidden, "not allowed")
 		}
 
 		tokenString, err := token.GenerateJWT(user.PhoneNumber, user.Name, user.Role)

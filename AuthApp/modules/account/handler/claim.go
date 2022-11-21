@@ -17,7 +17,7 @@ func TokenClaim() fiber.Handler {
 		date, _ := claim["timestamp"].(float64)
 
 		if err != nil || (date < float64(time.Now().Unix())) {
-			return fiber.NewError(http.StatusBadRequest, "token not valid")
+			return fiber.NewError(http.StatusForbidden, "token not valid")
 		}
 
 		c.Status(http.StatusOK).JSON(claim)
