@@ -6,6 +6,7 @@ import (
 	"fetchapp/modules/auth/models"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"os"
 	"time"
@@ -23,6 +24,8 @@ func TokenClaim(inp string) (models.UserDTO, error) {
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
+		x := err.Error()
+		log.Println(x)
 		return result, fmt.Errorf("got error %s", err.Error())
 	}
 
@@ -31,6 +34,8 @@ func TokenClaim(inp string) (models.UserDTO, error) {
 	response, err := client.Do(req)
 
 	if err != nil {
+		x := err.Error()
+		log.Println(x)
 		return result, fmt.Errorf("got error %s", err.Error())
 	}
 
