@@ -1,36 +1,33 @@
 package currency
 
 import (
-	"log"
-	"sync"
+	"fetchapp/modules/caching"
+	"fetchapp/modules/currency/models"
 	"time"
-
-	"github.com/go-co-op/gocron"
 )
 
-func WatcherTask(referenceTime *time.Time, limit float64, Clean func(), mutex *sync.RWMutex, scheduler *gocron.Scheduler) func() {
-	return func() {
-		mutex.RLock()
-		_started := referenceTime
-		mutex.RUnlock()
-		if n := time.Now().Sub(*_started).Minutes(); n > limit {
-			log.Print("cleaning caches")
-			Clean()
-			log.Print("clean was successful")
-			scheduler.Stop()
-		}
+var (
+	data caching.SessionCaching
+)
+
+func getCurrencyExchange() interface{} {
+	time.Sleep(time.Millisecond * 1300)
+	return models.CurrencyExchangeDTO{
+		Origin:    15000,
+		Reference: 1,
 	}
 }
 
-func Watcher(referenceTime *time.Time, mutex *sync.RWMutex, scheduler *gocron.Scheduler) error {
-	mutex.Lock()
-	*referenceTime = time.Now()
-	if scheduler != nil && scheduler.IsRunning() {
-		scheduler.Stop()
-		scheduler.StartAsync()
-	} else if scheduler != nil && !scheduler.IsRunning() {
-		scheduler.StartAsync()
+func init() {
+	data = caching.SessionCaching{
+		FetchData: getCurrencyExchange,
 	}
-	mutex.Unlock()
-	return nil
+	data.Begin()
+}
+
+func GetExchange() (*models.CurrencyExchangeDTO, error) {
+	x, err := data.GetData()
+	y := *x
+	z := y.(models.CurrencyExchangeDTO)
+	return &z, err
 }
