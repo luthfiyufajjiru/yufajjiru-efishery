@@ -72,7 +72,7 @@ services:
       target: prod
     environment:
       - port=8041
-      - authapp_url="authapp:8040"
+      - authapp_url="http://authapp:8040"
     expose:
       - 8041
     ports:
