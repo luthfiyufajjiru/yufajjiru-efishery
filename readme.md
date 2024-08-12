@@ -1,5 +1,5 @@
 
-# EFishery Backend Test
+# eFishery Backend Test
 ## Authors
 
 - [Luthfi Yufajjiru](https://www.github.com/luthfiyufajjiru)
